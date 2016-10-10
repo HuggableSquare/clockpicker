@@ -122,9 +122,14 @@
 		this.spanAmPm = popover.find('.clockpicker-span-am-pm');
 		this.amOrPm = "";
 		this.currentPlacementClass = options.placement;
-        this.raiseCallback = function() {
-            raiseCallback.apply(self, arguments);
-        };
+		this.raiseCallback = function() {
+			raiseCallback.apply(self, arguments);
+		};
+
+		// set the value on blur
+		this.input.blur(function(){
+			self.done()
+		});
 
 		// Setup for for 12 hour clock if option is selected
 		if (options.twelvehour) {
@@ -140,8 +145,8 @@
 						}, duration / 2);
 					}
 				}).appendTo(this.amPmBlock);
-				
-				
+
+
 			$('<button type="button" class="btn btn-sm btn-default clockpicker-button pm-button">' + "PM" + '</button>')
 				.on("click", function() {
 					self.amOrPm = 'PM';
@@ -153,9 +158,9 @@
 						}, duration / 2);
 					}
 				}).appendTo(this.amPmBlock);
-				
+
 		}
-		
+
 		if (! options.autoclose) {
 			// If autoclose is not setted, append a button
 			$('<button type="button" class="btn btn-sm btn-default btn-block clockpicker-button">' + options.donetext + '</button>')
@@ -555,13 +560,13 @@
 
 			this.isAppended = true;
 		}
-		
+
 		// Get the time from the input field
 		this.parseInputValue();
-		
+
 		this.spanHours.html(leadingZero(this.hours));
 		this.spanMinutes.html(leadingZero(this.minutes));
-		
+
 		if (this.options.twelvehour) {
 			this.spanAmPm.empty().append(this.amOrPm);
 		}
@@ -790,7 +795,7 @@
 		var last = this.input.prop('value'),
 			outHours = this.hours,
 			value = ':' + leadingZero(this.minutes);
-		
+
 		if (this.isHTML5 && this.options.twelvehour) {
 			if (this.hours < 12 && this.amOrPm === 'PM') {
 				outHours += 12;
@@ -799,16 +804,16 @@
 				outHours = 0;
 			}
 		}
-		
+
 		value = leadingZero(outHours) + value;
-		
+
 		if (!this.isHTML5 && this.options.twelvehour) {
 			value = value + this.amOrPm;
 		}
-		
+
 		this.input.prop('value', value);
 		if (value !== last) {
-			this.input.triggerHandler('change');
+			this.input.trigger('change');
 			if (! this.isInput) {
 				this.element.trigger('change');
 			}

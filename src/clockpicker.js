@@ -122,9 +122,14 @@
 		this.spanAmPm = popover.find('.clockpicker-span-am-pm');
 		this.amOrPm = "";
 		this.currentPlacementClass = options.placement;
-        this.raiseCallback = function() {
-            raiseCallback.apply(self, arguments);
-        };
+		this.raiseCallback = function() {
+			raiseCallback.apply(self, arguments);
+		};
+
+		// set the value on blur
+		this.input.blur(function(){
+			self.done()
+		});
 
 		// Setup for for 12 hour clock if option is selected
 		if (options.twelvehour) {
