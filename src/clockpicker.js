@@ -1,7 +1,7 @@
 /*!
- * ClockPicker v{package.version} (http://weareoutman.github.io/clockpicker/)
+ * ClockPicker v{package.version} (https://github.com/huggablesquare/clockpicker)
  * Copyright 2014 Wang Shenwei.
- * Licensed under MIT (https://github.com/weareoutman/clockpicker/blob/gh-pages/LICENSE)
+ * Licensed under MIT (https://github.com/huggablesquare/clockpicker/blob/gh-pages/LICENSE)
  */
 
 ;(function(){
