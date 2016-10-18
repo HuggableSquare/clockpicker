@@ -126,11 +126,6 @@
 			raiseCallback.apply(self, arguments);
 		};
 
-		// set the value on blur
-		this.input.blur(function(){
-			self.done()
-		});
-
 		// Setup for for 12 hour clock if option is selected
 		if (options.twelvehour) {
 
@@ -585,7 +580,7 @@
 			if (target.closest(self.popover).length === 0 &&
 					target.closest(self.addon).length === 0 &&
 					target.closest(self.input).length === 0) {
-				self.hide();
+				self.done();
 			}
 		});
 
